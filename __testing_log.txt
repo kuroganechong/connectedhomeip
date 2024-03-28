@@ -1,0 +1,15 @@
+trying out example at /examples/lighting-app/esp32
+
+To prepare the environment, need to start idf.py terminal by running `source export.sh` in {esp-idf installation}/esp-idf_tools/esp-idf/
+Then run `source {connectedhomeip installation}/scripts/activate.sh`
+Then run `export IDF_CCACHE_ENABLE=1` to accelerate build
+
+In the project folder, can do common idf settings and operations:
+idf.py set-target esp32
+idf.py menuconfig
+    - in Demo set device type
+    - in Component config > CHIP Device Layer set VendorID, ProductID
+    - and other related settings such as LED GPIO etc
+    - S to save, Q to quit
+idf.py build
+idf.py flash

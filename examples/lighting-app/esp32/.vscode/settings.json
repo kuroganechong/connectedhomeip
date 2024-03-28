@@ -1,0 +1,20 @@
+{
+    "idf.adapterTargetName": "esp32c3",
+    "idf.openOcdConfigs": [
+        "board/esp32c3-builtin.cfg"
+    ],
+    "idf.port": "/dev/ttyACM0",
+    "files.associations": {
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "compare": "cpp",
+        "rope": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp",
+        "valarray": "cpp",
+        "*.def": "cpp",
+        "__tree": "cpp",
+        "*.ipp": "cpp",
+        "*.inc": "cpp"
+    }
+}

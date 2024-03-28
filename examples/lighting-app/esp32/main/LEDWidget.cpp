@@ -59,7 +59,10 @@ void LEDWidget::Init(void)
         .duty       = 0,
         .hpoint     = 0,
     };
-    ledc_channel_config(&ledc_channel);
+    // ledc_channel_config(&ledc_channel);
+
+    /* Set the GPIO as a push/pull output */
+    gpio_set_direction(mGPIONum, GPIO_MODE_OUTPUT);
 #endif // CONFIG_LED_TYPE_RMT
 }
 
@@ -131,8 +134,13 @@ void LEDWidget::DoSet(void)
 #else
     if (mGPIONum < GPIO_NUM_MAX)
     {
-        ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, brightness);
-        ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+
+        /* Custom mode: Set the GPIO level according to the state (LOW or HIGH)*/
+        gpio_set_level(mGPIONum, mState);
+
+        // Original mode: PWM brightness control
+        // ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, brightness);
+        // ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
     }
 #endif // CONFIG_LED_TYPE_RMT
 #if CONFIG_HAVE_DISPLAY
